@@ -1,0 +1,43 @@
+table{
+    color: #000;
+    border: 1px solid #dee2e6;
+  }
+
+  th{
+    font-weight: 500;
+  }
+
+  .btn-nrnd{
+    border-radius: 0.0rem;
+    padding: 0.1rem 0.5rem;
+    font-size: 0.9rem; 
+  }
+
+  
+  .fc-asm {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #000;
+    position: relative;
+    /* border-radius: 0.25rem; 
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    */
+  }
+
+  .input-group > .fc-asm {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
+}

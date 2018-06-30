@@ -1,0 +1,83 @@
+<section id="basic-form-layouts">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-block">
+                    <div class="card-body">
+                        <h4 class="card-title">Search User</h4>
+                        <div style="float: left;">
+                        <h6 class="card-subtitle">Including information of user contact and asset</h6>
+                    </div>
+                    <div style="float: right;">
+                            <a class="btn btn-block btn-social mb-2 btn-dark" style="color: white">
+                                <span class="fa fa-search"></span> Search
+                            </a>
+                        </div>
+                        <table class="table table-responsive-md text-center">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>
+                                        <div class="custom-control custom-checkbox m-0">
+                                            <input type="checkbox" class="custom-control-input" id="chkAll" (change)="checkAll($event)">
+                                            <label class="custom-control-label" for="chkAll"></label>
+                                        </div>
+                                    </th>
+                                    <th>ID</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Department</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Asset</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of users; index as i">
+                                    <td>{{i+1}}</td>
+                                    <td>
+                                        <div class="custom-control custom-checkbox m-0">
+                                            <input type="checkbox" class="custom-control-input" [(ngModel)]="user.select" id="{{user.id}}">
+                                            <label class="custom-control-label" for="{{user.id}}"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a [routerLink]="['/user/edit-user', user.id]" style="color:deepskyblue"> {{user.id}}</a>
+
+                                    </td>
+                                    <td>{{user.f_name}}</td>
+                                    <td>{{user.l_name}}</td>
+                                    <td>{{user.dept_desc}}</td>
+                                    <td>{{user.email}}</td>
+                                    <td>{{user.phone}}</td>
+                                    <td>
+                                        <label *ngFor="let asset of user.assets">
+                                            {{asset.tag}},
+                                        </label>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                                <div class="col-md-5">
+                                    <ngb-pagination *ngIf="users" [collectionSize]="50" [page]="1" [maxSize]="5" [boundaryLinks]="true"
+                                        (pageChange)="changePage($event)"></ngb-pagination>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Showing 1 to 10 of 50 entries</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div style="float: right;">
+                                        <button type="submit" class="btn btn-nrnd btn-raised btn-raised btn-dark"> Add </button>
+                                        <button type="submit" class="btn btn-nrnd btn-raised btn-raised btn-dark"> Delete </button>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

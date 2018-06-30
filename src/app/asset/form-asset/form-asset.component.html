@@ -1,0 +1,307 @@
+<!-- Basic form layout section start -->
+<section id="basic-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="content-header">Asset Info</div>
+			<p class="content-sub-header">Including information : holder, maintenance and history</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+				</div>
+				<div class="card-body">
+					<div class="px-3">
+						<div class="form-body">
+							<h4 class="form-section">
+								<i class="ft-file-text"></i> Asset Profile</h4>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="tag">Asset Tag</label>
+										<input type="text" id="tag" class="fc-asm" name="tag" [(ngModel)]="asset.tag">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="model">Model</label>
+										<input type="text" id="model" class="fc-asm" name="model" [(ngModel)]="asset.model">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<label for="type_cd">Asset Type</label>
+									<div class="input-group">
+										<input type="text" class="fc-asm" name="type_cd" id="type_cd" placeholder="Find" aria-describedby="button-addon2" [(ngModel)]="asset_type.cd">
+										<div class="input-group-append">
+											<span class="input-group-btn" id="button-addon2">
+												<button class="btn btn-nrnd btn-raised btn-dark" type="button">Go</button>
+											</span>
+										</div>
+										<button type="button" class="btn btn-raised btn-raised btn-nrnd btn-dark" (click)="openNewAssetType(content1)">
+											<i class="fa fa-check-square-o"></i> New
+										</button>
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="status_cd">Status</label>
+										<select id="projectinput5" name="status_cd" class="fc-asm" [(ngModel)]="asset.status_cd">
+											<option value="D" selected>Deployed</option>
+											<option value="I">Idle</option>
+											<option value="R">Repair</option>
+											<option value="L">Lost</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<h4 class="form-section">
+								<i class="ft-info"></i> Purchase Info</h4>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="price">Price</label>
+										<input type="text" id="price" class="fc-asm" name="price" [(ngModel)]="asset.purchase_val">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="purchase_dt">Purchase Date</label>
+										<input type="date" id="purchase_dt" class="fc-asm" name="purchase_dt" data-toggle="tooltip" data-trigger="hover" data-placement="top"
+										 data-title="Purchase Date" [(ngModel)]="asset.purchase_dt">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="warranty">Warranty (in month)</label>
+										<input type="text" id="warranty" class="fc-asm" name="warranty"  [(ngModel)]="asset.warranty">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<label for="suppplier">Supplier</label>
+									<div class="input-group">
+										<input type="text" class="fc-asm" name="suppplier" id="suppplier" placeholder="Find" aria-describedby="button-addon2" ngModel>
+										<div class="input-group-append">
+											<span class="input-group-btn" id="button-addon2">
+												<button class="btn btn-raised btn-nrnd btn-dark" type="button">Go</button>
+											</span>
+										</div>
+										<button type="button" class="btn btn-raised btn-raised btn-nrnd btn-dark" (click)="openNewSupplier(content2)">
+											<i class="fa fa-check-square-o"></i> New
+										</button>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="input-group">
+										<label for="attachment">Attachment</label>
+										<input type="file" class="form-control-file" id="attachment">
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<h4 class="form-section">
+							<i class="ft-user"></i> Assign Asset</h4>
+						<div class="row">
+							<div class="col-md-4">
+								<label for="user">User</label>
+								<div class="input-group">
+									<input type="text" class="fc-asm" name="user_id" id="user_id" placeholder="Find" aria-describedby="button-addon2" ngModel>
+									<div class="input-group-append">
+										<span class="input-group-btn" id="button-addon2">
+											<button class="btn btn-raised btn-nrnd btn-dark" type="button">Go</button>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<label for="department">Department</label>
+								<div class="input-group">
+									<input type="text" class="fc-asm" name="dept_id" id="dept_id" placeholder="Find" aria-describedby="button-addon2" ngModel>
+									<div class="input-group-append">
+										<span class="input-group-btn" id="button-addon2">
+											<button class="btn btn-raised btn-nrnd btn-dark" type="button">Go</button>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<label for="location">Location</label>
+								<div class="input-group">
+									<input type="text" class="fc-asm" name="location_id" id="location_id" placeholder="Find" aria-describedby="button-addon2"
+									 ngModel>
+									<div class="input-group-append">
+										<span class="input-group-btn" id="button-addon2">
+											<button class="btn btn-raised btn-nrnd btn-dark" type="button">Go</button>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<button type="button" class="btn btn-raised btn-raised btn-nrnd btn-dark" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+								 aria-controls="addInfo">
+									<i class="fa fa-th-large"></i> Detail
+								</button>
+							</div>
+						</div>
+
+						<div id="addInfo" [ngbCollapse]="isCollapsed">
+							<h4 class="form-section"><i class="ft-minimize-2"></i>Deprication</h4>
+
+							<div class="row">
+								<div class="col-md-4">
+									<label for="depMethod">Deprication Method</label>
+									<div class="input-group">
+										<select id="depMethod" name="depMethod" class="fc-asm">
+											<option value="SL" selected>Straight Line</option>
+											<option value="DB">Declining Balance</option>
+											<option value="SY">Sum of The Year Digit</option>
+											<option value="DDB">Double Declining Digit</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+										<div class="form-group">
+												<label for="useYearLife">Useful Life (in years)</label>
+												<input type="text" id="useYearLife" class="fc-asm" name="useYearLife">
+											</div>
+								</div>
+								<div class="col-md-4">
+										<div class="form-group">
+												<label for="salvageValue">Salvage Value</label>
+												<input type="text" id="salvageValue" class="fc-asm" name="salvageValue">
+											</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-actions pull-right">
+							<button type="submit" class="btn btn-raised btn-raised btn-nrnd btn-dark">
+								<i class="fa fa-check-square-o"></i> Save
+							</button>
+							<button type="button" class="btn btn-raised btn-raised btn-nrnd btn-dark">
+								<i class="ft-x"></i> Cancel
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal create new supplier-->
+	<ng-template #content2 let-c="close" let-d="dismiss">
+		<div class="modal-header">
+			<h4 class="modal-title">Create Supplier</h4>
+			<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="n_sp_cd">Supplier Code</label>
+					<div class="position-relative has-icon-left">
+						<input type="text" id="n_sp_cd" class="fc-asm" name="n_sp_cd" [(ngModel)]="supplier.cd">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="n_sp_name">Name</label>
+					<div class="position-relative has-icon-left">
+						<input type="text" id="n_sp_name" class="fc-asm" name="n_sp_name" [(ngModel)]="supplier.name">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="n_sp_web">Website</label>
+					<div class="position-relative has-icon-left">
+						<input type="text" id="n_sp_web" class="fc-asm" name="n_sp_web" [(ngModel)]="supplier.website">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="n_sp_phone">Phone</label>
+					<div class="position-relative has-icon-left">
+						<input type="text" id="n_sp_phone" class="fc-asm" name="n_sp_phone" [(ngModel)]="supplier.phone">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="n_sp_email">Email</label>
+					<div class="position-relative has-icon-left">
+						<input type="text" id="n_sp_email" class="fc-asm" name="n_sp_email" [(ngModel)]="supplier.email">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<a (click)="addSupplier();d('Cross click');" class="btn btn-secondary btn-lg btn-block btn-raised btn-primary">
+						<i class="fa fa-check-square-o"></i> Save
+					</a>
+				</div>
+			</div>
+		</div>
+	</ng-template>
+
+	<ng-template #content1 let-c="close" let-d="dismiss">
+		<div class="modal-header">
+			<h4 class="modal-title">Create Asset Type</h4>
+			<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="n_type_cd">Type Code</label>
+					<div class="position-relative has-icon-left">
+						<input type="text" id="n_type_cd" class="fc-asm" name="n_type_cd" [(ngModel)]="asset_type.cd">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="name">Name</label>
+					<div class="position-relative has-icon-left">
+						<input type="text" id="name" class="fc-asm" name="name" [(ngModel)]="asset_type.name">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="depriciation">Depriciation (%)</label>
+					<div class="position-relative has-icon-left">
+						<input type="text" id="depriciation" class="fc-asm" name="depriciation" [(ngModel)]="asset_type.depriciation">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="retirement">Retirement (N-Month)</label>
+					<div class="position-relative has-icon-left">
+						<input type="text" id="retirement" class="fc-asm" name="retirement" [(ngModel)]="asset_type.retirement">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<a (click)="addAssetType();d('Cross click');" class="btn btn-secondary btn-lg btn-block btn-raised btn-primary">
+						<i class="fa fa-check-square-o"></i> Save
+					</a>
+				</div>
+			</div>
+		</div>
+
+	</ng-template>
+</section>
+<!-- // Basic form layout section end -->

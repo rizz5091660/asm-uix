@@ -1,0 +1,152 @@
+<section>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div style="float: left;">
+                        <h4 class="card-title">Search Asset</h4>
+                    </div>
+                    <div style="float: right;">
+                        <a class="btn btn-block btn-social mb-2 btn-dark" style="color: white;margin-bottom: -0.3rem !important;" (click)="open(content)">
+                            <span class="fa fa-search"></span> Search
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-block">
+                        <table class="table table-responsive-md text-center">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>
+                                        <div class="custom-control custom-checkbox m-0">
+                                            <input type="checkbox" class="custom-control-input" id="chkAll" (change)="checkAll($event)">
+                                            <label class="custom-control-label" for="chkAll"></label>
+                                        </div>
+                                    </th>
+                                    <th>Tag</th>
+                                    <th>Model</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th>User</th>
+                                    <th>Dept</th>
+                                    <th>Location </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let asset of assets; index as i">
+                                    <td>{{i+1}}</td>
+                                    <td>
+                                        <div class="custom-control custom-checkbox m-0">
+                                            <input type="checkbox" class="custom-control-input" [(ngModel)]="asset.select" id="{{asset.id}}">
+                                            <label class="custom-control-label" for="{{asset.id}}"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a [routerLink]="['/asset/edit-asset', asset.id]" style="color:deepskyblue"> {{asset.tag}}</a>
+
+                                    </td>
+                                    <td>{{asset.model}} </td>
+                                    <td>{{asset.type_cd}} </td>
+                                    <td>{{asset.status_cd}}</td>
+                                    <td>{{asset.user_id}} </td>
+                                    <td>{{asset.dept_cd}} </td>
+                                    <td>{{asset.location_cd}} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <ngb-pagination *ngIf="assets" [collectionSize]="assets[0].total_record" [page]="1" [maxSize]="5" [boundaryLinks]="true"
+                                    (pageChange)="changePage($event)"></ngb-pagination>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Showing 1 to 10 of 50 entries</label>
+                            </div>
+                            <div class="col-md-4">
+                                <div style="float: right;">
+                                    <button type="submit" class="btn btn-nrnd btn-raised btn-raised btn-dark" (click)="createAsset()"> Add </button>
+                                    <button type="submit" class="btn btn-nrnd btn-raised btn-raised btn-dark" (click)="createAsset()"> Delete </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #content let-c="close" let-d="dismiss">
+        <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
+            <div class="modal-header">
+                <h4 class="modal-title">Filter</h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="px-3">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" id="tag_s" placeholder="Asset Tag" class="fc-asm" name="tag_s" ngModel>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" id="model_s" placeholder="Model" class="fc-asm" name="model_s" ngModel>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <select id="status_cd_s" name="status_cd_s" class="fc-asm" ngModel>
+                                <option value="D">Deployed</option>
+                                <option value="I">Idle</option>
+                                <option value="R">Repair</option>
+                                <option value="L">Lost</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <select id="typ_cd_s" name="typ_cd_s" class="fc-asm" ngModel>
+                                <option value="LTP">Laptop</option>
+                                <option value="PH">Phone</option>
+                                <option value="MTR">Monitor</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="display: -webkit-box;">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" id="user_fn_s" placeholder="First Name" class="fc-asm" name="user_s" ngModel>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" id="user_ln_s" placeholder="Last Name" class="fc-asm" name="user_s" ngModel>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: -webkit-box;">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" id="dept_s" placeholder="Department" class="fc-asm" name="dept_s" ngModel>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" id="loc_s" placeholder="Location" class="fc-asm" name="loc_s" ngModel>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <a (click)="onSubmit(searchForm)" style="color:white" class="btn  btn-nrnd btn-secondary btn-lg btn-block btn-raised btn-dark">Find</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+</section>
+<!--built-in column filter types Ends-->
